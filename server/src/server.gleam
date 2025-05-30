@@ -33,7 +33,7 @@ pub fn main() -> Nil {
   let assert Ok(_) =
     wisp_mist.handler(handler, secret)
     |> mist.new
-    |> mist.port(8080)
+    |> mist.port(80)
     |> mist.start_http
 
   process.sleep_forever()
