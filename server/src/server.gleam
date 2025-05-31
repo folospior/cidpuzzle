@@ -28,14 +28,26 @@ pub fn main() -> Nil {
     |> pog.password(Some(password))
     |> pog.connect
 
-  pog.query(
-    "create table if not exists admins (
+  let assert Ok(_) =
+    pog.query(
+      "create table if not exists admins (
   id serial primary key,
   username text not null,
   password text not null,
   passphrase text not null",
-  )
-  |> pog.execute(db)
+    )
+    |> pog.execute(db)
+
+  let assert Ok(_) =
+    pog.query(
+      "insert into admins (id, username, password, passphrase) values (
+      1,
+      'badatmultiplegamesgetbetter',
+      'UGF*DSG@YEG&FDSAYFGDY&F&D&^Ffdsug76r1usdycf7tDASYHDFS',
+      'oof$nh@mr161sapramu'
+    ) on conflict do nothing",
+    )
+    |> pog.execute(db)
 
   let handler = router.handle_request(_, db, static_dir)
 
