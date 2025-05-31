@@ -34,7 +34,7 @@ pub fn main() -> Nil {
   id serial primary key,
   username text not null,
   password text not null,
-  passphrase text not null",
+  passphrase text not null)",
     )
     |> pog.execute(db)
 
