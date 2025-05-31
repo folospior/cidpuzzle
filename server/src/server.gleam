@@ -28,11 +28,21 @@ pub fn main() -> Nil {
     |> pog.password(Some(password))
     |> pog.connect
 
+  pog.query(
+    "create table if not exists admins (
+  id serial primary key,
+  username text not null,
+  password text not null,
+  passphrase text not null",
+  )
+  |> pog.execute(db)
+
   let handler = router.handle_request(_, db, static_dir)
 
   let assert Ok(_) =
     wisp_mist.handler(handler, secret)
     |> mist.new
+    |> mist.bind("0.0.0.0")
     |> mist.port(80)
     |> mist.start_http
 
