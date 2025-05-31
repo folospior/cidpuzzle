@@ -92,6 +92,14 @@ fn view(model: Model) {
         element.text("Login"),
       ]),
     ]),
+    html.footer([], [
+      html.p([], [
+        element.text(
+          "real talk - do not leave the bounds of this website, i do NOT want to get my server taken down for getting ddosed lmao",
+        ),
+      ]),
+      element.unsafe_raw_html("", "<marquee>", [], "signed by sgt.maj. f_o1oo"),
+    ]),
     case model.error {
       Some(text) ->
         html.p([attribute.style("color", "red")], [element.text(text)])
