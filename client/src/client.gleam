@@ -98,7 +98,7 @@ fn view(model: Model) {
           "real talk - do not leave the bounds of this website, i do NOT want to get my server taken down for getting ddosed lmao",
         ),
       ]),
-      element.unsafe_raw_html("", "<marquee>", [], "signed by sgt.maj. f_o1oo"),
+      element.unsafe_raw_html("", "marquee", [], "signed by sgt.maj. f_o1oo"),
     ]),
     case model.error {
       Some(text) ->
